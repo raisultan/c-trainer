@@ -1,0 +1,82 @@
+version: "3"
+
+services:
+  app:
+    build:
+      context: .
+    volumes:
+      - ./app:/app
+      - static_volume:/static
+      - media_volume:/media
+    networks:
+      - nginx_network
+      - db_network
+    command: >
+      sh -c "python manage.py migrate &&
+              python manage.py collectstatic --no-input --clear &&
+              gunicorn app.wsgi:application -w 4 --bind 0.0.0.0:8000"
+    environment:
+      - DB_HOST=db
+      - DB_NAME=app
+      - DB_USER=dbuser
+      - DB_PASSWORD=django123
+    depends_on:
+      - db
+      - redis
+
+  db:
+    image: postgres:10-alpine
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=app
+      - POSTGRES_USER=dbuser
+      - POSTGRES_PASSWORD=django123
+    networks:
+      - db_network
+
+  redis:
+    image: "redis:alpine"
+    networks:
+    - db_network
+
+  celery:
+    build: .
+    environment:
+      - DB_HOST=db
+      - DB_NAME=app
+      - DB_USER=dbuser
+      - DB_PASSWORD=django123
+    command: celery -A app worker -l info
+    volumes:
+      - ./app:/app
+    depends_on:
+      - db
+      - redis
+    networks:
+      - db_network
+
+  nginx:
+    image: nginx:1.13
+    ports:
+      - 8000:80
+    volumes:
+      - ./config/nginx/conf.d:/etc/nginx/conf.d
+      - static_volume:/static
+      - media_volume:/media
+    depends_on:
+      - app
+      - db
+    networks:
+      - nginx_network
+
+networks:
+  nginx_network:
+    driver: bridge
+  db_network:
+    driver: bridge
+
+volumes:
+  postgres-data:
+  static_volume:
+  media_volume:

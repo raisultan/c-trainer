@@ -10,9 +10,6 @@ class UserAuthSerializer(TokenObtainPairSerializer):
     def validate(self, attrs):
         validated_data = super().validate(attrs)
 
-        if self.user.is_trainer:
-            raise serializers.ValidationError('Пользователь не является студентом')
-
         return {
             'username': self.user.username,
             'tokens': {

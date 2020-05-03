@@ -1,1 +1,1 @@
-from .student_auth import StudentAuthAPIView
+from .login import UserAuthAPIView

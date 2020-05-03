@@ -1,1 +1,1 @@
-from .student import StudentAuthSerializer
+from .student import UserAuthSerializer

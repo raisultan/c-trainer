@@ -1,10 +1,8 @@
 from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
-from users.models.user import RoleChoices
 
-
-class StudentAuthSerializer(TokenObtainPairSerializer):
+class UserAuthSerializer(TokenObtainPairSerializer):
     default_error_messages = {
         'no_active_account': 'Неверный логин или пароль',
     }
@@ -21,5 +19,5 @@ class StudentAuthSerializer(TokenObtainPairSerializer):
                 'refresh': validated_data['refresh'],
                 'access': validated_data['access'],
             },
-            'role': RoleChoices.STUDENT,
+            'role': self.user.role,
         }

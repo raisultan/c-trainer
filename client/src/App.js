@@ -1,21 +1,27 @@
 import React from 'react';
+import {
+  BrowserRouter as Router,
+} from 'react-router-dom';
+import { Layout } from 'antd';
+import Header from "./app/Header";
+import Routes from './app/Routes';
+import Footer from "./app/Footer";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>ОПА</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Layout className="layout">
+        <Router>
+          <div>
+            <Header />
+            <Routes />
+          </div>
+        </Router>
+        <Layout.Content style={{ padding: '0 50px' }}>
+          <div className="site-layout-content">Content</div>
+        </Layout.Content>
+        <Footer />
+      </Layout>
     </div>
   );
 }

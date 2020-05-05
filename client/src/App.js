@@ -17,9 +17,6 @@ function App() {
             <Routes />
           </div>
         </Router>
-        <Layout.Content style={{ padding: '0 50px' }}>
-          <div className="site-layout-content">Content</div>
-        </Layout.Content>
         <Footer />
       </Layout>
     </div>

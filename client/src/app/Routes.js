@@ -1,5 +1,6 @@
 import {Route, Switch} from "react-router-dom";
 import React from "react";
+import Catalog from "../blog/Catalog";
 
 const Routes = () => (
   <Switch>
@@ -10,14 +11,10 @@ const Routes = () => (
       <Training />
     </Route>
     <Route path="/home">
-      <Home />
+      <Catalog />
     </Route>
   </Switch>
 )
-
-function Home() {
-  return <h2>Главнвая</h2>;
-}
 
 function Exam() {
   return <h2>Экзамен</h2>;

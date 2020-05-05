@@ -8,7 +8,7 @@ class CompressorInfoSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CompressorInfo
-        fields = ('image', 'title', 'text')
+        fields = ('id', 'image', 'title', 'text')
 
     def get_image(self, obj):
         return obj.image.name

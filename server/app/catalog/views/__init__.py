@@ -1,1 +1,1 @@
-from .compressor_info import CompressorInfoListAPIView
+from .compressor_info import CompressorInfoViewSet

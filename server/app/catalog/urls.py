@@ -1,7 +1,11 @@
-from django.urls import path
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
 
-from catalog.views import CompressorInfoListAPIView
+from catalog import views
+
+router = DefaultRouter()
+router.register('', views.CompressorInfoViewSet)
 
 urlpatterns = [
-    path('', CompressorInfoListAPIView.as_view(), name='compressor-info-list'),
+    path('', include(router.urls)),
 ]

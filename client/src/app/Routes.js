@@ -1,6 +1,7 @@
 import {Route, Switch} from "react-router-dom";
 import React from "react";
 import Catalog from "../blog/Catalog";
+import InfoPage from "../blog/InfoPage";
 
 const Routes = () => (
   <Switch>
@@ -13,6 +14,7 @@ const Routes = () => (
     <Route path="/home">
       <Catalog />
     </Route>
+    <Route path="/compressor/:id" render={(props) => <InfoPage {...props} />} />
   </Switch>
 )
 

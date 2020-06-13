@@ -6,12 +6,15 @@ class ChoiceOption(models.Model):
         to='exam.Choice',
         on_delete=models.CASCADE,
         related_name='options',
-        verbose_name='Question',
+        verbose_name='Вопрос',
     )
     title = models.CharField(
         max_length=214,
-        verbose_name='Title',
+        verbose_name='Текст варианта ответа',
     )
     is_correct = models.BooleanField(
-        verbose_name='Is correct',
+        verbose_name='Правильный',
     )
+
+    def __str__(self):
+        return f'Вариант ответа для {self.question.base_question.title}'

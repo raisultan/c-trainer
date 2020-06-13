@@ -6,17 +6,20 @@ class UserExam(models.Model):
         to='users.BaseUser',
         on_delete=models.CASCADE,
         related_name='exams',
-        verbose_name='User',
+        verbose_name='Пользователь',
     )
     base_exam = models.ForeignKey(
         to='exam.Exam',
         on_delete=models.CASCADE,
         related_name='user_exams',
-        verbose_name='User Exam',
+        verbose_name='Экзамен',
     )
     created_at = models.DateTimeField(
         auto_now_add=True,
     )
     time_spent = models.PositiveIntegerField(
-        verbose_name='Time spent',
+        verbose_name='Потраченное время',
     )
+
+    def __str__(self):
+        return f'{self.created_at} - {self.user.get_full_name()} - {self.base_exam.title}'

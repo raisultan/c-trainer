@@ -6,5 +6,8 @@ class Choice(models.Model):
         to='exam.Question',
         on_delete=models.CASCADE,
         related_name='choice',
-        verbose_name='Choice Question',
+        verbose_name='Базовый вопрос',
     )
+
+    def __str__(self):
+        return f'Выборка: {self.base_question.title}'

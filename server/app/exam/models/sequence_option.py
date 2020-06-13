@@ -6,12 +6,15 @@ class SequenceOption(models.Model):
         to='exam.Sequence',
         on_delete=models.CASCADE,
         related_name='options',
-        verbose_name='Question',
+        verbose_name='Вопрос',
     )
     title = models.CharField(
         max_length=214,
-        verbose_name='Title',
+        verbose_name='Текст варианта ответа',
     )
     number_in_seq = models.PositiveIntegerField(
-        verbose_name='Number in sequence',
+        verbose_name='Номер в последовательности',
     )
+
+    def __str__(self):
+        return f'Вариант ответа для {self.question.base_question.title}'

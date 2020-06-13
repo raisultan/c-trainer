@@ -6,5 +6,8 @@ class Sequence(models.Model):
         to='exam.Question',
         on_delete=models.CASCADE,
         related_name='sequence',
-        verbose_name='Sequence Question',
+        verbose_name='Базовый вопрос',
     )
+
+    def __str__(self):
+        return f'Последовательность: {self.base_question.title}'

@@ -6,13 +6,16 @@ class Question(models.Model):
         to='exam.Exam',
         on_delete=models.CASCADE,
         related_name='questions',
-        verbose_name='Exam',
+        verbose_name='Экзамен',
     )
     title = models.CharField(
         max_length=214,
-        verbose_name='Title',
+        verbose_name='Заголовок вопроса',
     )
     is_sequence = models.BooleanField(
         default=False,
-        verbose_name='Is sequence',
+        verbose_name='Последовательность',
     )
+
+    def __str__(self):
+        return self.title

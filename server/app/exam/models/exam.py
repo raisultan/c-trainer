@@ -6,9 +6,13 @@ class Exam(models.Model):
         max_length=214,
         verbose_name='Title',
     )
-    descripton = models.TextField(
+    description = models.TextField(
         verbose_name='Description',
     )
     max_time = models.PositiveIntegerField(
         verbose_name='Max amount of time to spend',
     )
+
+    @property
+    def questions_count(self):
+        return self.questions.count()

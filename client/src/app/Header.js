@@ -16,6 +16,9 @@ export default () => (
       <Menu.Item key="3">
         <Link to="/exam">Экзамен</Link>
       </Menu.Item>
+      <Menu.Item key="4">
+        <Link to="/logout">Выйти</Link>
+      </Menu.Item>
     </Menu>
   </Header>
 )

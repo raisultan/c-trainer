@@ -1,18 +1,25 @@
 import {Route, Switch} from "react-router-dom";
 import React from "react";
+import PrivateRoute from "../auth/PrivateRoute";
 import Catalog from "../blog/Catalog";
+import InfoPage from "../blog/InfoPage";
+import LoginForm from "../auth/LoginForm";
+import Logout from "../auth/Logout";
 
 const Routes = () => (
   <Switch>
-    <Route path="/exam">
+    <PrivateRoute path="/exam">
       <Exam />
-    </Route>
-    <Route path="/training">
+    </PrivateRoute>
+    <PrivateRoute path="/training">
       <Training />
-    </Route>
-    <Route path="/home">
+    </PrivateRoute>
+    <PrivateRoute path="/home">
       <Catalog />
-    </Route>
+    </PrivateRoute>
+    <PrivateRoute path="/compressor/:id" render={(props) => <InfoPage {...props} />} />
+    <Route path="/logout" render={(props) => <Logout {...props} />} />
+    <Route path="/login" render={(props) => <LoginForm {...props} />} />
   </Switch>
 )
 

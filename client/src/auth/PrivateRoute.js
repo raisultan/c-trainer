@@ -2,18 +2,18 @@ import React from "react";
 import { Redirect, Route } from 'react-router-dom';
 import AuthProvider from "./authProvider";
 
-export default function ({ children, ...rest }) {
+export default function ({ component: Component, ...rest }) {
   return (
     <Route
       {...rest}
-      render={({ location }) =>
+      render={(props) =>
         AuthProvider.isLoggedIn() ? (
-          children
+          <Component {...props} />
         ) : (
           <Redirect
             to={{
               pathname: "/login",
-              state: { from: location }
+              state: { from: props.location }
             }}
           />
         )

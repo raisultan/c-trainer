@@ -1,20 +1,20 @@
 class AuthProvider {
   isLoggedIn() {
-    const user = JSON.parse(localStorage.getItem('user'));
+    const user = JSON.parse(localStorage.getItem('student'));
     return Boolean(user);
   }
 
   saveUser(user) {
-    localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem('student', JSON.stringify(user));
   }
 
   getAccessToken() {
-    const user = JSON.parse(localStorage.getItem('user'));
-    return user.tokens.access;
+    const user = JSON.parse(localStorage.getItem('student'));
+    return user && user.tokens && user.tokens.access;
   }
 
   removeUser() {
-    localStorage.removeItem('user');
+    localStorage.removeItem('student');
   }
 }
 

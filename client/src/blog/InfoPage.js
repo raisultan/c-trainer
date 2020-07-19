@@ -11,6 +11,7 @@ export default class extends React.Component {
   }
 
   componentDidMount() {
+    console.log('DID MOUNT');
     const id = this.props.match.params.id;
     api.getCompressorPage(id)
       .then(res => this.setState({ page: res.data }))

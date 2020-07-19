@@ -3,5 +3,5 @@ import React from "react";
 const { Footer } = Layout;
 
 export default () => (
-  <Footer style={{ textAlign: 'center' }}>©2020 Все права защищены</Footer>
+  <Footer style={{ textAlign: 'center' }}> </Footer>
 )

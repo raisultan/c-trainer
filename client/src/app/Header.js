@@ -6,7 +6,7 @@ const { Header } = Layout;
 
 export default () => (
   <Header>
-    <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
+    <Menu theme="dark" mode="horizontal" >
       <Menu.Item key="1">
         <Link to="/home">Главная</Link>
       </Menu.Item>

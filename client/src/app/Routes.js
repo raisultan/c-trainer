@@ -1,4 +1,4 @@
-import {Route, Switch} from "react-router-dom";
+import {Route, Switch } from "react-router-dom";
 import React from "react";
 import PrivateRoute from "../auth/PrivateRoute";
 import Catalog from "../blog/Catalog";
@@ -8,16 +8,10 @@ import Logout from "../auth/Logout";
 
 const Routes = () => (
   <Switch>
-    <PrivateRoute path="/exam">
-      <Exam />
-    </PrivateRoute>
-    <PrivateRoute path="/training">
-      <Training />
-    </PrivateRoute>
-    <PrivateRoute path="/home">
-      <Catalog />
-    </PrivateRoute>
-    <PrivateRoute path="/compressor/:id" render={(props) => <InfoPage {...props} />} />
+    <PrivateRoute exact path="/exam" component={Exam} />
+    <PrivateRoute exact path="/training" component={Exam} />
+    <PrivateRoute exact path="/home" component={Catalog} />
+    <PrivateRoute path="/compressor/:id" component={InfoPage} />
     <Route path="/logout" render={(props) => <Logout {...props} />} />
     <Route path="/login" render={(props) => <LoginForm {...props} />} />
   </Switch>

@@ -75,7 +75,7 @@ export default class extends React.Component {
 
         <Form.Item {...tailLayout}>
           <Button type="primary" htmlType="submit">
-            Submit
+            Войти
           </Button>
         </Form.Item>
       </Form>
